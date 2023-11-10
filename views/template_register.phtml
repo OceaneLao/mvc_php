@@ -1,0 +1,58 @@
+<h1 class="text-center">
+    Register
+</h1>
+
+<?php // Message d'erreur 
+  if(!empty($error)) :?>
+  <div class="alert alert-danger" role="alert">
+    <?= $error ?>
+  </div>
+<?php endif; ?>
+
+<?php if(!isset($userAdded)): ?>
+  <div class="container">
+    <form method="POST" id="registerForm">
+
+      <div class="mb-3">
+        <label for="mail" class="form-label">Mail</label>
+        <input type="mail" class="form-control" id="mail" name="mail" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id= "password" name="password" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+      </div>
+
+      <input type="submit" id="registerBtn" class="btn btn-primary" name="Register" value="Register">
+    </form>
+  </div>
+
+  <?php else :?>
+    <div class="alert alert-success" role="alert">
+      Compte ajouté avec succès !<br>
+      <a href="?page=login">Se connecter</a>
+    </div>
+  <?php endif;?>
+
+<script type="text/javascript">
+  
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmPassword");
+  const registerBtn = document.getElementById("registerBtn");
+  const registerForm = document.getElementById("registerForm");
+
+  if(registerBtn !== null){
+    registerBtn.addEventListener("click", () => {
+      if(password.value != "" && password.value != confirmPassword.value){
+         alert("Votre mot de passe ne correspond pas à la confirmation de votre mot de passe. Veuillez réessayer !");
+        return false;
+      }
+      registerForm.submit();
+    });
+  }
+</script>

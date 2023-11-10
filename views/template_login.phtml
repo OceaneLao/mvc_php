@@ -1,0 +1,25 @@
+<h1 class="text-center">
+    Login
+</h1>
+
+<?php // Message d'erreur 
+  if(!empty($error)) :?>
+  <div class="alert alert-danger" role="alert">
+    <?= $error ?>
+  </div>
+<?php endif; ?>
+
+<form method="POST">
+  <div class="container">
+    <div class="mb-3">
+        <label for="mail" class="form-label">Email</label>
+        <input type="mail" class="form-control" id="mail" name="mail" required>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+
+      <input type="submit" class="btn btn-primary" name="submit" value="Login">
+  </div>
+</form>
