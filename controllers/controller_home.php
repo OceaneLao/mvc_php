@@ -1,6 +1,6 @@
 <?php
-require_once ("./models/Picture.php");
-$model = new Picture();
-$pictures = Picture::getAll();
+    require_once ("./services/class/Database.php");
+    $db = new Database();
+    $pictures = $db->query("SELECT * FROM pictures ORDER BY id DESC LIMIT 10");
 // --- la vue
 include "./views/layout.phtml";

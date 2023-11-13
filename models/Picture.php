@@ -1,14 +1,21 @@
 <?php
-require_once("./services/database.php"); // Charger un seul fichier
+require_once("./services/class/Database.php"); // Charger un seul fichier
 
 class Picture{
-    //Affiche toutes les images
-    public static function getAll() {
+
+    private $db;
+
+    public function __construct(){
+        $this->db = new Database();
+    }
+
+    public function getAll($nb=null) 
+    {
+        //Indiquer la limite
+        $limit = !is_null($nb) ? "LIMIT " . $nb : "";
         $pictures = [];
-        $db = connectDB();
-        $sql = $db->prepare("SELECT * FROM pictures ORDER BY id DESC");
-        $sql->execute();
-        $pictures = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $db = new Database();
+        $pictures = $db->query("SELECT * FROM pictures ORDER BY id DESC". $limit);
         return $pictures;
     }
 

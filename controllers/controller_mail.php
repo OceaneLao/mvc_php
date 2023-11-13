@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require './services/PHPMailer-master/src/Exception.php';
-require './services/PHPMailer-master/src/PHPMailer.php';
-require './services/PHPMailer-master/src/SMTP.php';
+require_once './services/PHPMailer-master/src/Exception.php';
+require_once './services/PHPMailer-master/src/PHPMailer.php';
+require_once './services/PHPMailer-master/src/SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -25,8 +25,8 @@ $mail->Password = 'ad1548e6db64f1';
  $mail->addBCC('bcc@example.com');
 
  //Attachments
- $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
- $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+//  $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+//  $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
  //Content
  $mail->isHTML(true);                                  //Set email format to HTML
@@ -39,12 +39,5 @@ $mail->Password = 'ad1548e6db64f1';
 } catch (Exception $e) {
  echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-// $mail = mail('oceane.lao1@gmail.com','Hello','Je fais un test','From: moi@exemple.com');
-
-// if ($mail){
-//     echo "Merci";
-// }else{
-//     echo "Erreur";
-// }
 
 include "./views/layout.phtml";
